@@ -24,9 +24,7 @@ public class LearnApplication {
 		String[] beanArray = ct.getBeanDefinitionNames();
 		Arrays.sort(beanArray);
 
-		for(String name : beanArray){
-			System.out.println(name);
-		}
+
 
 	}
 
