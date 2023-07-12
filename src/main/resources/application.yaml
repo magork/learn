@@ -7,3 +7,5 @@ common:
         url: 127.0.0.1
 HomeController:
     msg: Text from yaml file!
+
+    page: D:\Learn\SpringBoot\learn\src\main\resources\public\index.html

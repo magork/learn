@@ -18,6 +18,9 @@ public class HomeController {
    @Value("${HomeController.msg}")
    private String message;
 
+   @Value("${HomeController.page}")
+   private String page;
+
     @Autowired
     public void setSpyService(SpyService spyService){
         this.spyService = spyService;
@@ -25,7 +28,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(){
-        return message;
+        return page;
     }
 
 
