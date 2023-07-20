@@ -21,19 +21,21 @@ import jakarta.servlet.http.HttpServletRequest;
  @Controller
 public class ErrorPageController implements ErrorController {
 
-     private static final String ERR_PATH = "/error";
+     private static final String ERROR_PATH = "/error";
+     private static final String ERROR_TEMPLATE = "customError";
 
-     private ErrorAttributes errorAttributes;
+
+     private final ErrorAttributes errorAttributes;
 
     @Autowired
     public void setErrorAttributes(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
     }
 
-    @RequestMapping(ERR_PATH)
+    @RequestMapping(ERROR_PATH)
     public String error(Model model, HttpServletRequest request){
-        ServletWebRequest rA = new ServletWebRequest(request);
-        Map<String,Object> error = this.errorAttributes.getErrorAttributes(rA, ErrorAttributeOptions.defaults());
+       
+        Map<String,Object> error = getErrorAttributes(request, true);
 
         model.addAttribute("timestamp", error.get("timestamp"));
         model.addAttribute("error", error.get("error"));
@@ -41,12 +43,17 @@ public class ErrorPageController implements ErrorController {
         model.addAttribute("path", error.get("path"));
         model.addAttribute("status", error.get("status"));
 
-        return null;
+        return ERROR_TEMPLATE;
     }
 
     @Override
     public String getErrorPath() {
-        return ERR_PATH;
+        return ERROR_PATH;
+    }
+
+    private Map<String,Object> getErrorAttributes(HttpServletRequest request, boolean includesStackTrace){
+        RequestAttributes requestAttributes =new ServletRequestAttributes(request);
+        return this.errorAttributes.getErrorAttributes(requestAttributes, includesStackTrace);
     }
 
 
