@@ -21,22 +21,6 @@ public class JavaTantusz {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner billentyuzet = new Scanner(System.in);
-        
-//        int i =10;
-//        System.out.println(i++);
-//        System.out.println(--i);
-//        --i;
-//        i--;
-//        System.out.println(i);
-//        System.out.println(++i);
-//        System.out.println(i--);
-//        System.out.println(i);
-//        i++;
-//        System.out.println(i);
-//        i = i++ + ++i;
-//        System.out.println(i);
-//        i = i++ + i++;
-//        System.out.println(i);
 
         int tipszam = 0;
         int veletszam = new Random().nextInt(100)+1;
@@ -61,15 +45,7 @@ public class JavaTantusz {
                {
             out.println(" Nyertel, ");
             out.println(tipszam + " probalkozas utan.");
-//         while (bekertszam != veletszam) {
-//            out.println();
-//            out.println("Probalkozz ujra... ");
-//            out.print("Irj be egy 1 es 10 kozotti egesz szamot: ");
-//            bekertszam = billentyuzet.nextInt();
-//            tipszam++;
        }
-        out.println(" Nyertel, ");
-        out.println(tipszam + " probalkozas utan.");
         billentyuzet.close();
     }
  }
